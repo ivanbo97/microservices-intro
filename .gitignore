@@ -75,7 +75,7 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
-
+idea
 target
 build
 .metadata
@@ -113,6 +113,7 @@ local.properties
 
 # sbteclipse plugin
 .target
+.idea
 
 # Tern plugin
 .tern-project
