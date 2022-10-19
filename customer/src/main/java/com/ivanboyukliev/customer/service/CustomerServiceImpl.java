@@ -1,11 +1,9 @@
 package com.ivanboyukliev.customer.service;
 
-import com.ivanboyukliev.customer.api.customer.CustomerModel;
-import com.ivanboyukliev.customer.api.customer.CustomerRegistrationRequest;
+import com.ivanboyukliev.customer.api.CustomerRegistrationRequest;
 import com.ivanboyukliev.customer.model.Customer;
 import com.ivanboyukliev.customer.model.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

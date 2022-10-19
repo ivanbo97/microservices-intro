@@ -1,4 +1,4 @@
-package com.ivanboyukliev.customer.api.customer;
+package com.ivanboyukliev.customer.api;
 
 import com.ivanboyukliev.customer.model.Customer;
 import com.ivanboyukliev.customer.service.CustomerService;

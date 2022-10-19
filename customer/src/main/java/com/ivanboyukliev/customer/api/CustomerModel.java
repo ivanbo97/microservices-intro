@@ -1,4 +1,4 @@
-package com.ivanboyukliev.customer.api.customer;
+package com.ivanboyukliev.customer.api;
 
 import lombok.AccessLevel;
 import lombok.Builder;

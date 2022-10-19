@@ -1,5 +1,7 @@
-package com.ivanboyukliev.customer.api.customer;
+package com.ivanboyukliev.customer.api;
 
+import com.ivanboyukliev.customer.api.CustomerApi;
+import com.ivanboyukliev.customer.api.CustomerModel;
 import com.ivanboyukliev.customer.model.Customer;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
