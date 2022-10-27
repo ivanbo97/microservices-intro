@@ -33,6 +33,9 @@ public class CustomerApi {
   public ResponseEntity<CustomerModel> registerCustomer(
       @RequestBody CustomerRegistrationRequest registrationRequest) {
     var createdCustomer = customerService.registerCustomer(registrationRequest);
+    log.info(
+        "New customer registration for {}",
+        registrationRequest.firstName() + " " + registrationRequest.lastName());
     return new ResponseEntity<>(
         customerModelAssembler.toModel(createdCustomer), HttpStatus.CREATED);
   }

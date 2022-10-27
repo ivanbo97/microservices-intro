@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FraudCheckHistoryRepository extends JpaRepository<FraudCheckHistory, Integer> {
 
-  FraudCheckHistory getByCustomerId();
+  FraudCheckHistory getByCustomerId(Integer customerId);
 }

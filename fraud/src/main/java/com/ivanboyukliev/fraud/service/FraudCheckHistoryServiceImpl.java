@@ -15,18 +15,17 @@ public class FraudCheckHistoryServiceImpl implements FraudCheckHistoryService {
   @Autowired private final FraudCheckHistoryRepository fraudCheckRepo;
 
   @Override
-  public boolean isFraudulentCustomer(Integer customerId) {
-    fraudCheckRepo.save(
+  public FraudCheckHistory isFraudulentCustomer(Integer customerId) {
+    return fraudCheckRepo.save(
         FraudCheckHistory.builder()
             .customerId(customerId)
             .isFraudster(false)
             .createdAt(LocalDateTime.now())
             .build());
-    return false;
   }
 
   @Override
   public FraudCheckHistory getByCustomerId(Integer customerId) {
-    return fraudCheckRepo.getByCustomerId();
+    return fraudCheckRepo.getByCustomerId(customerId);
   }
 }
