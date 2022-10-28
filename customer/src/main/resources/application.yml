@@ -9,9 +9,17 @@ spring:
     username: ivanboyukliev
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop  #always have empty tables when starting the app (not recommended in prod)
+
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
+
+    eureka:
+      client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka
+        fetch-registry: true
+        register-with-eureka: true

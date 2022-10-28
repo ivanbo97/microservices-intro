@@ -41,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
     customerRepository.saveAndFlush(customer);
     FraudCheckModel fraudCheck =
         restTemplate.getForObject(
-            "http://localhost:8081/api/v1/fraud-check/{customerId}",
+            "http://FRAUD/api/v1/fraud-check/{customerId}",
             FraudCheckModel.class,
             customer.getId());
 
