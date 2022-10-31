@@ -28,6 +28,14 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+    # The zipkin process services the UI, and also exposes a POST endpoint that
+    # instrumentation can send trace data to. Scribe is disabled by default.
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    # Environment settings are defined here https://github.com/openzipkin/zipkin/blob/master/zipkin-server/README.md#environment-variables
+    ports:
+      - "9411:9411"
 
 networks:
   postgres:
