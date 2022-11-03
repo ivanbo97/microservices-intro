@@ -4,8 +4,8 @@ server:
 spring:
   application:
     name: api-gateway
-  zipkin:
-    base-url: http://localhost:9411
+  zipkin: # zipkin is used for visualization of request's trance in microservices architecture
+    base-url: http://zipkin:9411 #! zipkin in this url is the name of the zipkin container
   cloud:
     gateway:
       routes:
@@ -17,6 +17,6 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka # eureka-server in this name is actually the eureka-server container
     fetch-registry: true
     register-with-eureka: true

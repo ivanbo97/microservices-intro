@@ -1,12 +1,13 @@
 package com.ivanboyukliev.customer.service;
 
+import com.ivanboyukliev.amqp.RabbitMqMessageProducer;
+import com.ivanboyukliev.clients.fraud.FraudCheckModel;
 import com.ivanboyukliev.clients.fraud.FraudClient;
-import com.ivanboyukliev.clients.notification.NotificationClient;
+import com.ivanboyukliev.clients.notification.NotificationRequest;
 import com.ivanboyukliev.customer.api.CustomerRegistrationRequest;
 import com.ivanboyukliev.customer.model.Customer;
 import com.ivanboyukliev.customer.model.CustomerRepository;
-import com.ivanboyukliev.fraud.api.FraudCheckModel;
-import com.ivanboyukliev.notification.api.NotificationRequest;
+;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Autowired private FraudClient fraudClient;
 
-  @Autowired private NotificationClient notificationClient;
+  @Autowired private RabbitMqMessageProducer messageProducer;
 
   @Override
   public Customer getCustomerById(Integer customerId) {
@@ -52,13 +53,16 @@ public class CustomerServiceImpl implements CustomerService {
       throw new IllegalStateException("Customer is a fraudster");
     }
 
-    notificationClient.saveNotification(
+    NotificationRequest notificationRequest =
         NotificationRequest.builder()
             .customerId(customer.getId())
             .customerEmail(customer.getEmail())
             .message("Congrats! Successful registration! Our service made it!")
             .sender("Customer Microservice")
-            .build());
+            .build();
+
+    messageProducer.publish(
+        notificationRequest, "internal.exchange", "rabbitmq.routing-keys.internal-notification");
     return customer;
   }
 }

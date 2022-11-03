@@ -4,9 +4,6 @@ import com.ivanboyukliev.fraud.model.FraudCheckHistory;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
-import static org.springframework.hateoas.server.core.DummyInvocationUtils.methodOn;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-
 @Component
 public class FraudCheckModelAssembler
     extends RepresentationModelAssemblerSupport<FraudCheckHistory, FraudCheckModel> {
