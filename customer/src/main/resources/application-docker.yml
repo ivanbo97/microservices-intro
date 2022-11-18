@@ -27,3 +27,4 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka #! eureka-server in this url is the name of the eureka-server container
     fetch-registry: true
     register-with-eureka: true
+    enabled: false
