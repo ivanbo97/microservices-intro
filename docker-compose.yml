@@ -72,48 +72,45 @@ services:
   #    depends_on:
   #      - zipkin
   #      - eureka-server
-#  customer:
-#    image: ivanbo97/customer:latest
-#    container_name: customer
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker # Here we are defining an env var which will make spring boot app start with application-docker.yml config
-#    networks:
-#      - spring
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - postgres
-#      - rabbitmq
-#  fraud:
-#    image: ivanbo97/fraud:latest
-#    container_name: fraud
-#    ports:
-#      - "8081:8081"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker # Here we are defining an env var which will make spring boot app start with application-docker.yml config
-#    networks:
-#      - spring
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - postgres
-#      - rabbitmq
-#  notification:
-#    image: ivanbo97/notification:latest
-#    container_name: notification
-#    ports:
-#      - "8082:8082"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker # Here we are defining an env var which will make spring boot app start with application-docker.yml config
-#    networks:
-#      - spring
-#    depends_on:
-#      - zipkin
-#      - eureka-server
-#      - rabbitmq
-#      - postgres
+  customer:
+    image: ivanbo97/customer:latest
+    container_name: customer
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker # Here we are defining an env var which will make spring boot app start with application-docker.yml config
+    networks:
+      - spring
+    depends_on:
+      - zipkin
+      - postgres
+      - rabbitmq
+  fraud:
+    image: ivanbo97/fraud:latest
+    container_name: fraud
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker # Here we are defining an env var which will make spring boot app start with application-docker.yml config
+    networks:
+      - spring
+    depends_on:
+      - zipkin
+      - postgres
+      - rabbitmq
+  notification:
+    image: ivanbo97/notification:latest
+    container_name: notification
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker # Here we are defining an env var which will make spring boot app start with application-docker.yml config
+    networks:
+      - spring
+    depends_on:
+      - zipkin
+      - rabbitmq
+      - postgres
 networks:
   postgres:
     driver: bridge
